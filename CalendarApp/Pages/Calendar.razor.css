@@ -1,0 +1,239 @@
+/* Global variables moved to wwwroot/css/app.css */
+
+/* Global resets moved to wwwroot/css/app.css */
+
+.project-container {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto; /* центрирование блока */
+
+    padding: var(--spacing-main-top) var(--spacing-main-right) var(--spacing-main-bottom) var(--spacing-main-left);
+}
+
+.top-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.calendar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.today-dropdown, .date-display {
+    min-width: var(--dropdown-width);
+    min-height: var(--dropdown-height);
+    background: var(--color-black);
+    border: 0.5px solid var(--color-border-active);
+    border-radius: var(--border-radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.today-dropdown {
+    padding: 0 8px 0 10px;
+}
+
+.date-display {
+    padding: 0 12px;
+    align-self: flex-start;
+}
+
+.today-text, .date-text {
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--color-text);
+}
+
+.dropdown-arrow {
+    width: 7px;
+    height: 5px;
+    margin: 11px 0;
+}
+
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-width: var(--calendar-width);
+    min-height: var(--calendar-height);
+    margin-top: var(--spacing-calendar-gap);
+    background: var(--color-container-bg);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.55);
+    border-radius: var(--border-radius-small);
+    padding: var(--calendar-padding-top) var(--calendar-padding-x) 0 var(--calendar-padding-x);
+}
+
+.filter-buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    width: 336px;
+    height: 28px;
+    flex-wrap: nowrap;
+}
+
+.filter-btn-frame {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 5px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-small);
+    background: transparent;
+    min-width: 0;
+    min-height: 0;
+}
+
+.filter-btn-today {
+    width: 58px;
+}
+
+.filter-btn-yesterday {
+    width: 81px;
+}
+
+.filter-btn-weekago {
+    width: 86px;
+}
+
+.filter-btn-monthago {
+    width: 93px;
+}
+
+.filter-btn-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.month-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 13.5px;
+    margin-bottom: 14.5px;
+    padding-left: calc(31px - var(--calendar-padding-x)); /* 18px */
+    padding-right: calc(21px - var(--calendar-padding-x)); /* 8px */
+    height: 21px;
+}
+
+    .month-navigation > .nav-left,
+    .month-navigation > .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+    }
+
+    .month-navigation > .month-title {
+        flex: 1 1 auto; /* занимает всё доступное пространство между кнопками flex-grow: 1;flex-shrink: 1;flex-basis: auto;*/
+        text-align: center;
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 21px;
+        color: #FFFFFF;
+    }
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    line-height: 0; /* чтобы svg не сдвигался */
+    cursor: pointer;
+}
+
+    .nav-btn svg {
+        display: block;
+    }
+
+/* Calendar days grid */
+.calendar-days-wrapper {
+    display: grid;
+    grid-template-columns: repeat(7, var(--text-col));
+    grid-auto-rows: var(--text-row);
+    column-gap: var(--gap-x);
+    row-gap: var(--gap-y);
+    width: var(--calendar-days-width);
+    height: var(--calendar-days-height);
+    margin-left: calc(var(--grid-edge-left) - var(--calendar-padding-x));
+    margin-right: calc(var(--grid-edge-right) - var(--calendar-padding-x));
+    margin-bottom: 17.5px;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Grid item wrapper: сохраняет сетку 17?22 (text-box) */
+.calendar-cell {
+    position: relative; /* для привязки позиционирования кнопки внутри, у которой position: absolute*/
+    width: var(--text-col);
+    height: var(--text-row);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; /* чтобы внутренний hit-area 28?28 не обрезался, пока ни на что не влияет, но надо*/
+}
+
+/* Реальная кликабельная кнопка */
+.calendar-day {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* центрирование по родителю, css-паттерн */
+    width: var(--active-size);
+    height: var(--active-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: var(--day-radius);
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    /* кнопка находится над фоном календаря, но не влияет на layout */
+    z-index: 2;
+}
+
+        .calendar-day.active {
+        background: var(--active-day-bg);
+        color: #ffffff;
+    }
+
+       .calendar-day.prev-month,
+    .calendar-day.next-month {
+        color: rgba(255, 255, 255, 0.2); /* лучше чем в Figme */
+        background: transparent;
+        /* background: #2B2B2B;
+opacity: 0.77; */
+    }
+
+        .calendar-day:focus {
+        outline: 2px solid rgba(255,255,255,0.08);
+        outline-offset: 2px;
+        border-radius: var(--day-radius);
+    }

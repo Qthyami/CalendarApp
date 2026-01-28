@@ -1,0 +1,18 @@
+﻿
+@inject CalendarApp.CalendarState State
+
+<button class="today-dropdown" @onclick="GoToToday" type="button">
+    <span class="today-text">Today</span>
+    <svg class="icon icon-caret dropdown-arrow" width="7" height="5">
+        <use href="/images/icons-sprite.svg#icon-caret" xlink:href="/images/icons-sprite.svg#icon-caret"></use>
+    </svg>
+</button>
+
+
+
+@code {
+private void GoToToday()
+    {
+        State.SetDate(DateTime.Today);
+    }
+}

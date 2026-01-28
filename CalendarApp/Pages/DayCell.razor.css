@@ -1,0 +1,28 @@
+/* Styles for DayCell component (button) */
+.calendar-day {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--active-size);
+    height: var(--active-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: var(--day-radius);
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.calendar-day.active { background: var(--active-day-bg); color: #ffffff; }
+.calendar-day.prev-month, .calendar-day.next-month { color: rgba(255, 255, 255, 0.2); background: transparent; }
+.calendar-day:focus { outline: 2px solid rgba(255,255,255,0.08); outline-offset: 2px; border-radius: var(--day-radius); }

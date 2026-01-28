@@ -1,0 +1,55 @@
+﻿@page "/"
+@using System.Globalization
+@using CalendarApp.Pages
+
+<div class="project-container">
+  <div class="calendar-column">
+    <div class="top-controls">
+            <DropdownButton/>
+  
+        </div>
+
+    <div class="calendar-container">
+      <div class="filter-buttons-wrapper">
+        <button class="filter-btn-frame filter-btn-today" type="button" ><span class="filter-btn-text">Today</span></button>
+        <button class="filter-btn-frame filter-btn-yesterday" type="button" ><span class="filter-btn-text">Yesterday</span></button>
+        <button class="filter-btn-frame filter-btn-weekago" type="button" ><span class="filter-btn-text">Week Ago</span></button>
+        <button class="filter-btn-frame filter-btn-monthago" type="button"><span class="filter-btn-text">Month Ago</span></button>
+      </div>
+
+      <div class="month-navigation">
+        <div class="nav-left">
+          <button class="nav-btn nav-start"  type="button">
+            <svg class="icon icon-double-left" width="11" height="8">
+              <use href="/images/icons-sprite.svg#icon-double-left" xlink:href="/images/icons-sprite.svg#icon-double-left"></use>
+            </svg>
+          </button>
+          <button class="nav-btn nav-prev"  type="button">
+            <svg class="icon icon-left" width="5" height="7">
+              <use href="/images/icons-sprite.svg#icon-left" xlink:href="/images/icons-sprite.svg#icon-left"></use>
+            </svg>
+          </button>
+        </div>
+
+        <div class="month-title">February 2025</div>
+
+        <div class="nav-right">
+          <button class="nav-btn nav-next" type="button">
+            <svg class="icon icon-right" width="5" height="7">
+              <use href="/images/icons-sprite.svg#icon-right" xlink:href="/images/icons-sprite.svg#icon-right"></use>
+            </svg>
+          </button>
+          <button class="nav-btn nav-end" type="button">
+            <svg class="icon icon-double-right" width="11" height="8">
+              <use href="/images/icons-sprite.svg#icon-double-right" xlink:href="/images/icons-sprite.svg#icon-double-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <Cells/>
+    </div>
+  </div>
+</div>
+@code {
+
+}

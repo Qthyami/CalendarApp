@@ -1,0 +1,29 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- double left (to start) -->
+  <symbol id="icon-double-left" viewBox="0 0 11 8" preserveAspectRatio="xMidYMid meet">
+    <path d="M0 4L4.5 0.535898V7.4641L0 4Z" fill="currentColor"/>
+    <path d="M5 4L9.5 0.535898V7.4641L5 4Z" fill="currentColor"/>
+  </symbol>
+
+  <!-- single left (prev) -->
+  <symbol id="icon-left" viewBox="0 0 5 7" preserveAspectRatio="xMidYMid meet">
+    <path d="M0 3.4641L4.5 0V6.9282L0 3.4641Z" fill="currentColor"/>
+  </symbol>
+
+  <!-- single right (next) -->
+  <symbol id="icon-right" viewBox="0 0 5 7" preserveAspectRatio="xMidYMid meet">
+    <path d="M4.5 3.4641L0 0V6.9282L4.5 3.4641Z" fill="currentColor"/>
+  </symbol>
+
+  <!-- double right (to end) -->
+  <symbol id="icon-double-right" viewBox="0 0 11 8" preserveAspectRatio="xMidYMid meet">
+    <path d="M11 4L6.5 0.535898V7.4641L11 4Z" fill="currentColor"/>
+    <path d="M6 4L1.5 0.535898V7.4641L6 4Z" fill="currentColor"/>
+  </symbol>
+
+  <!-- caret/down (small dropdown arrow) -->
+  <symbol id="icon-caret" viewBox="0 0 7 5" preserveAspectRatio="xMidYMid meet">
+    <path d="M3.4641 4.5L0 0L6.9282 0L3.4641 4.5Z" fill="currentColor"/>
+  </symbol>
+</svg>

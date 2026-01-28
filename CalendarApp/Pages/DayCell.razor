@@ -1,0 +1,45 @@
+﻿@inject CalendarState State
+@implements IDisposable
+
+<button class="@CssClass"
+        onclick="@(() => SetDate())">
+    @Date.Day
+</button>
+
+@code {
+    [Parameter]
+    public DateTime Date { get; set; }
+    [Parameter]
+    public DateTime CurrentMonth { get; set; }
+
+    protected override void
+    OnInitialized() {
+        State.OnChange += StateHasChanged;
+    }
+    public void
+    Dispose() {
+        State.OnChange -= StateHasChanged;
+    }
+
+    private bool IsActive => State.SelectedDate.Date == Date.Date;
+    private bool IsCurrentMonth => Date.Month == CurrentMonth.Month && Date.Year == CurrentMonth.Year;
+    private string CssClass => BuildCssClass();
+    private string
+    BuildCssClass() {
+        var classes = new List<string> { "calendar-day" };
+        if (IsActive) {
+            classes.Add("active");
+        }
+
+        if(!IsCurrentMonth) {
+            classes.Add(Date < CurrentMonth ? "prev-month" : "next-month");
+        }       
+        return string.Join(" ", classes);
+    }
+
+    private void
+    SetDate() {
+        State.SetDate(Date);
+    }
+
+ }
