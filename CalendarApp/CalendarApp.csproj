@@ -36,6 +36,12 @@
     <None Update="Pages\FilterButtonsGroup.razor.css">
       <DependentUpon>FilterButtonsGroup.razor</DependentUpon>
     </None>
+    <None Update="Pages\NavButton.razor.css">
+      <DependentUpon>NavButton.razor</DependentUpon>
+    </None>
+    <None Update="Pages\MonthNavigation.razor.css">
+      <DependentUpon>MonthNavigation.razor</DependentUpon>
+    </None>
   </ItemGroup>
 
 </Project>

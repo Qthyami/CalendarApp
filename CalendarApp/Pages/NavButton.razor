@@ -1,0 +1,22 @@
+﻿
+<button class="nav-btn @AdditionalClass" @onclick="OnClick">
+    <svg class="icon @IconClass" width="@Width" height="@Height">
+        <use href="@IconHref"></use>
+    </svg>
+</button>
+
+@code {
+    [Parameter]
+    public string AdditionalClass { get; set; } = string.Empty;
+    [Parameter]
+    public string IconClass { get; set; } = string.Empty;
+    [Parameter]
+    public string IconHref { get; set; } = string.Empty;
+    [Parameter]
+    public int Width { get; set; } 
+    [Parameter]
+    public int Height { get; set; } 
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+}

@@ -1,0 +1,72 @@
+﻿@inject CalendarState State;
+<div class="month-navigation">
+    <div class="nav-left">
+        <NavButton IconClass="icon-double-left" Width="11" Height="8"
+                   IconHref="/images/icons-sprite.svg#icon-double-left"
+                   AdditionalClass="nav-start"
+                   OnClick="() => GoToStartYear()" />
+
+        <NavButton IconClass="icon-left" Width="5" Height="7"
+                   IconHref="/images/icons-sprite.svg#icon-left"
+                   AdditionalClass="nav-prev"
+                   OnClick="GoToPreviousMonth" />
+    </div>
+
+    <div class="month-title">@СurrentMonth.ToString("MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)</div>
+
+    <div class="nav-right">
+        <NavButton IconHref="/images/icons-sprite.svg#icon-right"
+                   IconClass="icon-right"
+                   Width="5" Height="7"
+                   AdditionalClass="nav-next"
+                   OnClick="GoToNextMonth" />
+
+        <NavButton IconHref="/images/icons-sprite.svg#icon-double-right"
+                   IconClass="icon-double-right"
+                   Width="11" Height="8"
+                   AdditionalClass="nav-end"
+                   OnClick="GoToEndYear" />
+    </div>
+</div>
+@code {
+    private DateTime СurrentMonth => new(State.SelectedDate.Year, State.SelectedDate.Month, 1);
+
+    protected override
+    void OnInitialized() {
+        State.OnChange += StateHasChanged;
+    }
+
+    public void
+    Dispose() {
+        State.OnChange -= StateHasChanged;
+    }
+    private void
+    GoToPreviousMonth() {
+        var previousMonth = СurrentMonth.AddMonths(-1);
+        State.SetDate(previousMonth);
+    }
+    private void
+    GoToNextMonth() {
+        var nextMonth = СurrentMonth.AddMonths(1);
+        State.SetDate(nextMonth);
+    }
+    private void
+    GoToStartYear() {
+        var thisYearStart = new DateTime(СurrentMonth.Year, 1, 1);
+        if (State.SelectedDate.Date == thisYearStart.Date) {
+            State.SetDate(thisYearStart.AddYears(-1));
+            return;
+        }
+
+        State.SetDate(thisYearStart);
+    }
+    private void
+    GoToEndYear() {
+        var endYear = new DateTime(СurrentMonth.Year, 12, 1);
+        if (State.SelectedDate.Date == endYear.Date) {
+            State.SetDate(endYear.AddYears(1));
+            return;
+        }
+        State.SetDate(endYear);
+    }
+}
