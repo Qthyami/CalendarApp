@@ -12,7 +12,7 @@
 
 @code {
     private DateTime CurrentMonth;
-    private List<DateTime> CellsList = new();
+    private List<DateTime> CellsList = new(); 
     public enum WeekDay {
         Monday = 1,
         Tuesday,
@@ -36,13 +36,14 @@
             CurrentMonth = newMonth;
             GenerateCells();
         }
-        InvokeAsync(StateHasChanged);
+       // State.OnChange += StateHasChanged; - нельзя, т.к. будет кольцевая зависимость
+       InvokeAsync(StateHasChanged);
     }
 
     private void GenerateCells() {
         CellsList.Clear();
         var firstDayOfMonth = new DateTime(CurrentMonth.Year, CurrentMonth.Month, 1);
-        // DayOfWeek: Sunday=0, Monday=1 ... Saturday=6
+        // DayOfWeek: Sunday=0, Monday=1 .. Saturday=6
 
         WeekDay firstWeekDay = firstDayOfMonth.DayOfWeek switch {
             DayOfWeek.Monday => WeekDay.Monday,
@@ -58,7 +59,7 @@
         int startOffset = (int)firstWeekDay - 1; // понедельник = 1 -> offset=0
         var startDate = firstDayOfMonth.AddDays(-startOffset);
 
-        // Total cells in 6 weeks grid: 7 days * 6 rows = 42
+        //42 cells
         int totalCells = 7 * 6;
 
         for (int i = 0; i < totalCells; i++) {

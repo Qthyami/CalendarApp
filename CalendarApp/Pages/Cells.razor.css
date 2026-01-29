@@ -1,4 +1,4 @@
-/* Calendar grid and cell layout specific to Cells component */
+
 .calendar-container {
     display: flex;
     flex-direction: column;

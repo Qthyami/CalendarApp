@@ -11,7 +11,17 @@
 }
 
 .today-dropdown {
+    position: relative;
     padding: 0 8px 0 10px;
+}
+
+.today-native {
+    position: absolute;
+    inset: 0;
+    opacity: 0; /* скрываем системны select,  */
+    cursor: pointer;
+    color: white;
+    background-color: #000000;    
 }
 
 .date-display {

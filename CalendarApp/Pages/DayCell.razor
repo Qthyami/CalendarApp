@@ -11,19 +11,11 @@
     public DateTime Date { get; set; }
     [Parameter]
     public DateTime CurrentMonth { get; set; }
-
-    protected override void
-    OnInitialized() {
-        State.OnChange += StateHasChanged;
-    }
-    public void
-    Dispose() {
-        State.OnChange -= StateHasChanged;
-    }
-
+   
     private bool IsActive => State.SelectedDate.Date == Date.Date;
     private bool IsCurrentMonth => Date.Month == CurrentMonth.Month && Date.Year == CurrentMonth.Year;
     private string CssClass => BuildCssClass();
+
     private string
     BuildCssClass() {
         var classes = new List<string> { "calendar-day" };
@@ -35,6 +27,16 @@
             classes.Add(Date < CurrentMonth ? "prev-month" : "next-month");
         }       
         return string.Join(" ", classes);
+    }
+
+    protected override void
+   OnInitialized() {
+        State.OnChange += StateHasChanged;
+    }
+
+    public void
+    Dispose() {
+        State.OnChange -= StateHasChanged;
     }
 
     private void

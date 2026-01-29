@@ -1,18 +1,30 @@
-﻿
-@inject CalendarApp.CalendarState State
+﻿@inject CalendarState State
+<div class="top-controls">
+    <div class="today-dropdown">
+        <select class="today-native" @onchange="OnChanged" type="button">
+            <option value="today">Today</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="nextWeek">Next week</option>
+        </select>
 
-<button class="today-dropdown" @onclick="GoToToday" type="button">
-    <span class="today-text">Today</span>
-    <svg class="icon icon-caret dropdown-arrow" width="7" height="5">
-        <use href="/images/icons-sprite.svg#icon-caret" xlink:href="/images/icons-sprite.svg#icon-caret"></use>
-    </svg>
-</button>
+        <span class="today-text">Today</span>
 
+        <svg class="icon icon-caret dropdown-arrow" width="7" height="5">
+            <use href="/images/icons-sprite.svg#icon-caret" xlink:href="/images/icons-sprite.svg#icon-caret"></use>
+        </svg>
 
-
+    </div>
+</div>
 @code {
-private void GoToToday()
-    {
-        State.SetDate(DateTime.Today);
+    private void OnChanged(ChangeEventArgs e) {
+        var selectedValue = e.Value?.ToString();
+
+        var date = selectedValue switch {
+            "today" => DateTime.Today,
+            "tomorrow" => DateTime.Today.AddDays(1),
+            "nextWeek" => DateTime.Today.AddDays(7),
+            _ => DateTime.Today
+        };
+        State.SetDate(date);
     }
 }
