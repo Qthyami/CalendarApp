@@ -51,40 +51,6 @@
     white-space: nowrap;
 }
 
-/*.month-navigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 13.5px;
-    margin-bottom: 14.5px;
-    padding-left: calc(31px - var(--calendar-padding-x));*/ /* 18px */
-    /*padding-right: calc(21px - var(--calendar-padding-x));*/ /* 8px */
-    /*height: 21px;
-}
-
-    .month-navigation > .nav-left,
-    .month-navigation > .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 13px;
-        width: 8px;
-        height: 6px;
-
-    }
-
-.month-navigation > .month-title {
-    flex: 1 1 auto;
-    text-align: center;
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 21px;
-    color: #FFFFFF;
-}*/
-
-
-
 /* Calendar days grid */
 .calendar-days-wrapper {
     display: grid;

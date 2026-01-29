@@ -1,4 +1,3 @@
-/* Styles for DayCell component (button) */
 .calendar-day {
     position: absolute;
     left: 50%;
@@ -25,4 +24,4 @@
 
 .calendar-day.active { background: var(--active-day-bg); color: #ffffff; }
 .calendar-day.prev-month, .calendar-day.next-month { color: rgba(255, 255, 255, 0.2); background: transparent; }
-.calendar-day:focus { outline: 2px solid rgba(255,255,255,0.08); outline-offset: 2px; border-radius: var(--day-radius); }
+.calendar-day:focus { outline: none; }

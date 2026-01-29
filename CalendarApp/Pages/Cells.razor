@@ -43,7 +43,6 @@
     private void GenerateCells() {
         CellsList.Clear();
         var firstDayOfMonth = new DateTime(CurrentMonth.Year, CurrentMonth.Month, 1);
-        // DayOfWeek: Sunday=0, Monday=1 .. Saturday=6
 
         WeekDay firstWeekDay = firstDayOfMonth.DayOfWeek switch {
             DayOfWeek.Monday => WeekDay.Monday,

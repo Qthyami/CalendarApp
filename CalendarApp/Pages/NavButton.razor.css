@@ -12,17 +12,5 @@
 
 .nav-btn svg {
     display: block;
-    /* Make SVG use the current text color so icons follow theme */
-    fill: currentColor;
-}
+  }
 
-/* Ensure button color is the calendar text color (white-ish) */
-.nav-btn {
-    color: var(--color-text);
-}
-
-/* Some sprites include fills on child elements; force them to currentColor */
-.nav-btn svg * {
-    fill: currentColor;
-}
-}

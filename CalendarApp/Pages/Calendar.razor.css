@@ -99,7 +99,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible; /* чтобы внутренний hit-area 28?28 не обрезалс€, пока ни на что не вли€ет, но надо*/
+    overflow: visible; /* чтобы внутренний hit-area 28x28 не обрезалс€, пока ни на что не вли€ет, но надо*/
 }
 
 /* –еальна€ кликабельна€ кнопка */
@@ -141,8 +141,8 @@
 opacity: 0.77; */
     }
 
-        .calendar-day:focus {
+/*        .calendar-day:focus {
         outline: 2px solid rgba(255,255,255,0.08);
         outline-offset: 2px;
         border-radius: var(--day-radius);
-    }
+    }*/
