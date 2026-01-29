@@ -30,6 +30,12 @@
     <None Update="Pages\DayCell.razor.css">
       <DependentUpon>DayCell.razor</DependentUpon>
     </None>
+    <None Update="Pages\FilterButton.razor.css">
+      <DependentUpon>FilterButton.razor</DependentUpon>
+    </None>
+    <None Update="Pages\FilterButtonsGroup.razor.css">
+      <DependentUpon>FilterButtonsGroup.razor</DependentUpon>
+    </None>
   </ItemGroup>
 
 </Project>
