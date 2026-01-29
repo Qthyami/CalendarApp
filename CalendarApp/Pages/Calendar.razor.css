@@ -1,7 +1,4 @@
 /* Global variables moved to wwwroot/css/app.css */
-
-/* Global resets moved to wwwroot/css/app.css */
-
 .project-container {
     display: flex;
     justify-content: center;
@@ -73,8 +70,6 @@
     padding: var(--calendar-padding-top) var(--calendar-padding-x) 0 var(--calendar-padding-x);
 }
 
-/* Navigation styles moved to MonthNavigation.razor.css and NavButton.razor.css */
-
 /* Calendar days grid */
 .calendar-days-wrapper {
     display: grid;
@@ -140,9 +135,3 @@
         /* background: #2B2B2B;
 opacity: 0.77; */
     }
-
-/*        .calendar-day:focus {
-        outline: 2px solid rgba(255,255,255,0.08);
-        outline-offset: 2px;
-        border-radius: var(--day-radius);
-    }*/

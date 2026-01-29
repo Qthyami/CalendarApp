@@ -18,7 +18,7 @@
 .today-native {
     position: absolute;
     inset: 0;
-    opacity: 0; /* скрываем системны select,  */
+    opacity: 0; /* скрываем системный select */
     cursor: pointer;
     color: white;
     background-color: #000000;    
