@@ -1,7 +1,7 @@
 ﻿@using System.Globalization
 @using CalendarApp.Pages
 
-        <div class="calendar-select">
+<calendar-select-box class="calendar-select">
             <button class="today-dropdown" type="button" @onclick="TogglePopup">
                 <span class="today-text">@Date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)</span>
                 <svg class="icon icon-caret dropdown-arrow" width="7" height="5">
@@ -9,14 +9,13 @@
                 </svg>
             </button>
 
-            @if (IsPopupOpened) {
-                <div class="calendar-container calendar-popup">
-                <MonthNavigation />
-                    <Cells />
-                </div>
-            }
-        </div>
-        
+    @if (IsPopupOpened) {
+        <CalendarView 
+            Date="@Date"
+                      DateChanged="@DateChangedHandler" />
+    }
+</calendar-select-box>
+
 @code {
     [Parameter] public DateTime Date { get; set; }
     [Parameter] public EventCallback<DateTime> DateChanged { get; set; }
@@ -24,9 +23,10 @@
     private bool IsPopupOpened { get; set; }
     private void TogglePopup() => IsPopupOpened = !IsPopupOpened;
 
-    private async Task DateChangedHandler(DateTime newDate) {
+    private void DateChangedHandler(DateTime newDate) {
         Date = newDate;
-        await DateChanged.InvokeAsync(newDate);
+        IsPopupOpened = false;
+        DateChanged.InvokeAsync(newDate);
     }
 }
 

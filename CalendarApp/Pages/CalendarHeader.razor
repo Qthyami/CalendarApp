@@ -1,7 +1,7 @@
-﻿<h3>CalendarHeader</h3>
+﻿<MonthNavigation @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
 
 @code {
-    [Parameter] public DateTime SelectedDate { get; set; }
+    [Parameter] public DateTime SelectedMonthStartDate { get; set; }
     [Parameter] public EventCallback<DateTime> SelectedMonthStartDateChanged { get; set; }
 
 }
