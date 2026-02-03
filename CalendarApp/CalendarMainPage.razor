@@ -1,0 +1,9 @@
+﻿@page "/"
+<div class="project-container">
+
+<CalendarSelectBox @bind-Date="SelectedDateTime" />
+</div>
+
+@code {
+    private DateTime SelectedDateTime { get; set; } = DateTime.Now;
+}
