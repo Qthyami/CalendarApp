@@ -12,7 +12,7 @@
     @if (IsPopupOpened) {
         <CalendarView 
             Date="@Date"
-                      DateChanged="@DateChangedHandler" />
+            DateChanged="@DateChangedHandler" />
     }
 </calendar-select-box>
 
@@ -23,10 +23,10 @@
     private bool IsPopupOpened { get; set; }
     private void TogglePopup() => IsPopupOpened = !IsPopupOpened;
 
-    private void DateChangedHandler(DateTime newDate) {
+    private async Task DateChangedHandler(DateTime newDate) {
         Date = newDate;
         IsPopupOpened = false;
-        DateChanged.InvokeAsync(newDate);
+       await DateChanged.InvokeAsync(newDate);
     }
 }
 

@@ -1,15 +1,20 @@
 ﻿<calendar class="calendar-container calendar-popup">
-    <CalendarHeader @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
-@* <MonthNavigation /> *@
+
+ <MonthNavigation @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
 <Cells />
 </calendar>
 @code {
     [Parameter] public DateTime Date { get; set; }
     [Parameter] public EventCallback<DateTime> DateChanged { get; set; }
-    private DateTime SelectedMonthStartDate { get; set; }
-    protected override void OnInitialized()
-    {
-        SelectedMonthStartDate = new DateTime(Date.Year, Date.Month, 1);
+    DateTime SelectedMonthStartDate { get; set; }
+
+    protected override void 
+    OnParametersSet() {
+        if (SelectedMonthStartDate == default ||
+        SelectedMonthStartDate.Year != Date.Year ||
+        SelectedMonthStartDate.Month != Date.Month) {
+            SelectedMonthStartDate = new DateTime(Date.Year, Date.Month, 1);
+        }
     }
 
 }
