@@ -1,19 +1,38 @@
 ﻿<calendar class="calendar-container calendar-popup">
 
  <MonthNavigation @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
-<Cells />
+ <div class="calendar-grid">
+        @foreach (var day in Days) {
+            var cellClass = "calendar-grid__button".AddWordIf(IsAnotherMonth(day), "calendar-grid__button--another-month");
+        <div class="calendar-grid__cell">
+                <CalendarDayCell Class="@cellClass"
+                                 Date="day"
+                                 IsSelected="day == Date"
+                                 OnSelected="() => HandleDateSelected(day)"/>
+        </div>
+        }
+    </div>
+
 </calendar>
 @code {
     [Parameter] public DateTime Date { get; set; }
     [Parameter] public EventCallback<DateTime> DateChanged { get; set; }
     DateTime SelectedMonthStartDate { get; set; }
 
+    public IEnumerable<DateTime> Days => SelectedMonthStartDate.GetDaysWithinWeeks(weeksCount: 6);
+
+    private DateTime CurrentMonth => new(SelectedMonthStartDate.Year, SelectedMonthStartDate.Month, 1);
+
+    private bool IsAnotherMonth(DateTime day) => day.Month != CurrentMonth.Month || day.Year != CurrentMonth.Year;
+
+    void HandleDateSelected(DateTime date) => DateChanged.InvokeAsync(date);
+
     protected override void 
     OnParametersSet() {
         if (SelectedMonthStartDate == default ||
         SelectedMonthStartDate.Year != Date.Year ||
         SelectedMonthStartDate.Month != Date.Month) {
-            SelectedMonthStartDate = new DateTime(Date.Year, Date.Month, 1);
+        SelectedMonthStartDate = new DateTime(Date.Year, Date.Month, 1);
         }
     }
 

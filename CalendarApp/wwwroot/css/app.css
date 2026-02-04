@@ -282,7 +282,7 @@ code {
             min-height: var(--calendar-height);
         }
 
-    .calendar-days-wrapper {
+    .calendar-grid {
         display: grid;
         grid-template-columns: repeat(7, var(--text-col));
         grid-auto-rows: var(--text-row);
@@ -294,7 +294,7 @@ code {
         align-items: center;
     }
 
-    .calendar-cell {
+    .calendar-grid__cell {
         position: relative;
         width: var(--text-col);
         height: var(--text-row);
@@ -304,7 +304,7 @@ code {
         overflow: visible;
     }
 
-    .calendar-day {
+    .calendar-grid__button {
         position: absolute;
         left: 50%;
         top: 50%;
@@ -328,16 +328,16 @@ code {
         z-index: 2;
     }
 
-        .calendar-day.active {
+        .calendar-grid__button--selected{
             background: var(--active-day-bg);
             color: #ffffff;
         }
 
-        .calendar-day.prev-month,
-        .calendar-day.next-month {
-            color: rgba(255, 255, 255, 0.2);
-            background: transparent;
-        }
+.calendar-grid__button--another-month {
+
+    color: rgba(255, 255, 255, 0.2);
+    background: transparent;
+}
 
   
     .filter-buttons-wrapper {
