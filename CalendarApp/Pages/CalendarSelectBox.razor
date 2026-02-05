@@ -2,8 +2,8 @@
 @using CalendarApp.Pages
 
 <calendar-select-box class="calendar-select">
-    <button class="today-dropdown" @onclick="TogglePopup">
-        <span class="today-text">@Date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)</span>
+    <button class="calendar-select__toggle" @onclick="TogglePopup">
+        <span class="calendar-select__text">@Date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)</span>
         <Icon Value="IconsEnum.ChevronDown" />
     </button>
 
@@ -24,7 +24,6 @@
     //По правилам тут должен быть не void, a Task
     private async void DateChangedHandler(DateTime newDate) {
         Date = newDate;
-        IsPopupOpened = false;
         await DateChanged.InvokeAsync(newDate);
     }
 }

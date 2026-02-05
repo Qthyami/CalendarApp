@@ -1,4 +1,4 @@
-/* Global CSS variables moved from Calendar.razor.css so they are available app-wide */
+
 :root {
     --color-bg: #2C2C2C;
     --color-container-bg: #2B2B2B;
@@ -40,7 +40,6 @@
     --calendar-padding-bottom: 20.5px;
 }
 
-/* Global resets and base styles moved from Calendar.razor.css */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -73,7 +72,7 @@ a, .btn-link {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -170,20 +169,15 @@ code {
     text-align: start;
 }
 
-/* =========================
-   Moved from former *.razor.css (css isolation) files
-   ========================= */
-
-/* Pages/Calendar.razor.css */
 .project-container {
     display: flex;
     justify-content: center;
     width: 100%;
     min-height: 100%;
     margin: 0 auto;
-
     padding: var(--spacing-main-top) var(--spacing-main-right) var(--spacing-main-bottom) var(--spacing-main-left);
 }
+
 .calendar-select {
     display: flex;
     flex-direction: column;
@@ -192,212 +186,210 @@ code {
     width: var(--calendar-width);
     min-width: var(--calendar-width);
 }
-    
+
     /* запретить раст€гивание кнопки по ширине родител€ */
-    .calendar-select .today-dropdown {
+    .calendar-select .calendar-select__toggle {
         width: var(--dropdown-width);
         flex: 0 0 auto; /* не раст€гиватьс€, не сжиматьс€ */
         align-self: flex-start;
     }
 
-    .calendar-column {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.calendar-column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
-    .dropdown-anchor {
-        position: relative;
-        display: inline-block; /* или inline-flex */
-        width: fit-content;
-    }
-    /* кнопка (можно оставить position: relative, но не об€зательно) */
-    .today-dropdown {
-        min-width: var(--dropdown-width);
-        min-height: var(--dropdown-height);
-        background: var(--color-black);
-        border: 0.5px solid var(--color-border-active);
-        border-radius: var(--border-radius-small);
-        position: relative; /* допустимо оставить */
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 11px 0 10px;
-        cursor: pointer;
-        appearance: none;
-        -webkit-appearance: none;
-    }
+.dropdown-anchor {
+    position: relative;
+    display: inline-block; /* или inline-flex */
+    width: fit-content;
+}
+
+.calendar-select__toggle {
+    min-width: var(--dropdown-width);
+    min-height: var(--dropdown-height);
+    background: var(--color-black);
+    border: 0.5px solid var(--color-border-active);
+    border-radius: var(--border-radius-small);
+    position: relative; /* допустимо оставить */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 11px 0 10px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
 
 
-    .today-native {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        cursor: pointer;
-        color: white;
-        background-color: #000000;
-    }
+.today-native {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    color: white;
+    background-color: #000000;
+}
 
-    .date-display {
-        padding: 0 12px;
-        align-self: flex-start;
-    }
+.date-display {
+    padding: 0 12px;
+    align-self: flex-start;
+}
 
-    .today-text, .date-text {
-        font-family: 'Segoe UI', -apple-system, sans-serif;
-        font-weight: 600;
-        font-size: 15px;
-        line-height: 22px;
-        color: var(--color-text);
-    }
+.calendar-select__text, .date-text {
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--color-text);
+}
 
-    .dropdown-arrow {
-        width: 7px;
-        height: 5px;
-        margin: 11px 0;
-    }
+.dropdown-arrow {
+    width: 7px;
+    height: 5px;
+    margin: 11px 0;
+}
 
-    .calendar-container {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-width: var(--calendar-width);
+    min-height: var(--calendar-height);
+    margin-top: var(--spacing-calendar-gap);
+    background: var(--color-container-bg);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.55);
+    border-radius: var(--border-radius-small);
+    padding: var(--calendar-padding-top) var(--calendar-padding-x) 0 var(--calendar-padding-x);
+}
+
+    .calendar-container.calendar-popup {
+        z-index: 1000;
+        margin-top: var(--spacing-calendar-gap);
+        padding-bottom: var(--calendar-padding-bottom);
+        /* зазор под кнопкой */
+        width: var(--calendar-width);
         min-width: var(--calendar-width);
         min-height: var(--calendar-height);
-        margin-top: var(--spacing-calendar-gap);
-        background: var(--color-container-bg);
-        box-shadow: 0 12px 25px rgba(0,0,0,0.55);
-        border-radius: var(--border-radius-small);
-        padding: var(--calendar-padding-top) var(--calendar-padding-x) 0 var(--calendar-padding-x);
-    }
-        /* попап Ч теперь центрируетс€ под .dropdown-anchor */
-        .calendar-container.calendar-popup {
-            z-index: 1000;
-            margin-top: var(--spacing-calendar-gap);
-            padding-bottom: var(--calendar-padding-bottom);
-            /* зазор под кнопкой */
-            width: var(--calendar-width);
-            min-width: var(--calendar-width);
-            min-height: var(--calendar-height);
-        }
-
-    .calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(7, var(--text-col));
-        grid-auto-rows: var(--text-row);
-        column-gap: var(--gap-x);
-        row-gap: var(--gap-y);
-        width: var(--calendar-days-width);
-        height: var(--calendar-days-height);
-        justify-items: center;
-        align-items: center;
     }
 
-    .calendar-grid__cell {
-        position: relative;
-        width: var(--text-col);
-        height: var(--text-row);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: visible;
-    }
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, var(--text-col));
+    grid-auto-rows: var(--text-row);
+    column-gap: var(--gap-x);
+    row-gap: var(--gap-y);
+    width: var(--calendar-days-width);
+    height: var(--calendar-days-height);
+    justify-items: center;
+    align-items: center;
+}
 
-    .calendar-grid__button {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: var(--active-size);
-        height: var(--active-size);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        border: none;
-        background: transparent;
-        border-radius: var(--day-radius);
-        font-family: 'Segoe UI', sans-serif;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 22px;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.75);
-        cursor: pointer;
-        z-index: 2;
-    }
+.calendar-grid__cell {
+    position: relative;
+    width: var(--text-col);
+    height: var(--text-row);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
 
-        .calendar-grid__button--selected{
-            background: var(--active-day-bg);
-            color: #ffffff;
-        }
+.calendar-grid__button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--active-size);
+    height: var(--active-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: var(--day-radius);
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.calendar-grid__button--selected {
+    background: var(--active-day-bg);
+    color: #ffffff;
+}
 
 .calendar-grid__button--another-month {
-
     color: rgba(255, 255, 255, 0.2);
     background: transparent;
 }
 
-  
-    .filter-buttons-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 6px;
-        width: 336px;
-        height: 28px;
-        flex-wrap: nowrap;
-    }
-    
-    .filter-btn-frame {
-        box-sizing: border-box;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 28px;
-        padding: 5px 10px;
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius-small);
-        background: transparent;
-        min-width: 0;
-        min-height: 0;
-    }
+.filter-buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    width: 336px;
+    height: 28px;
+    flex-wrap: nowrap;
+}
 
-    .filter-btn-today {
-        width: 58px;
-    }
+.filter-btn-frame {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 5px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-small);
+    background: transparent;
+    min-width: 0;
+    min-height: 0;
+}
 
-    .filter-btn-yesterday {
-        width: 81px;
-    }
+.filter-btn-today {
+    width: 58px;
+}
 
-    .filter-btn-weekago {
-        width: 86px;
-    }
+.filter-btn-yesterday {
+    width: 81px;
+}
 
-    .filter-btn-monthago {
-        width: 93px;
-    }
+.filter-btn-weekago {
+    width: 86px;
+}
 
-    .filter-btn-text {
-        font-family: 'Segoe UI', sans-serif;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 20px;
-        color: var(--color-text);
-        white-space: nowrap;
-    }
-    /* Pages/MonthNavigation.razor.css */
-    .month-navigation {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 8px;
-        margin-bottom: 14.5px;
-        height: 21px;
-    }
+.filter-btn-monthago {
+    width: 93px;
+}
+
+.filter-btn-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.month-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 14.5px;
+    height: 21px;
+}
 
     .month-navigation > .month-navigation__left,
     .month-navigation > .month-navigation__right {
@@ -406,52 +398,48 @@ code {
         gap: 13px;
     }
 
-        .month-navigation > .month-navigation__title {
-            flex: 1 1 auto;
-            text-align: center;
-            font-family: 'Segoe UI', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 21px;
-            color: #FFFFFF;
-        }
-    /* Pages/NavButton.razor.css */
-    .month-navigation__button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        border: none;
-        background: transparent;
-        line-height: 0;
-        cursor: pointer;
+    .month-navigation > .month-navigation__title {
+        flex: 1 1 auto;
+        text-align: center;
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 21px;
+        color: #FFFFFF;
     }
+
+.month-navigation__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    line-height: 0;
+    cursor: pointer;
+}
 
     .month-navigation__button svg {
         display: block;
     }
-    /* Layout/MainLayout.razor.css (converted ::deep selectors to global) */
-    .page {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
 
-    main {
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+}
+
+    main > article {
         flex: 1;
-        display: flex;
-    }
-
-        main > article {
-            flex: 1;
-            min-height: 100vh;
-        }
-
-/* Layout helper styles removed: template example rules (.sidebar, .top-row, responsive helpers)
-   were intentionally deleted to keep only app-specific layout rules above. */
-
-
-    #app {
         min-height: 100vh;
     }
+
+#app {
+    min-height: 100vh;
+}

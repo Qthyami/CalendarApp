@@ -9,7 +9,8 @@ public static class DateTimeFunctions {
     public static string ToMMMMyyyy(this System.DateTime dateTime) =>
         dateTime.ToString("MMMM yyyy");
 
-    public static IEnumerable<System.DateTime> GetDaysWithinWeeks(this System.DateTime dateTime, int weeksCount) {
+    public static
+    IEnumerable<System.DateTime> GetDaysWithinWeeks(this System.DateTime dateTime, int weeksCount) {
         var resultDaysCount = 7 * weeksCount;
 
         var firstDayOfMonth = new System.DateTime(dateTime.Year, dateTime.Month, 1);

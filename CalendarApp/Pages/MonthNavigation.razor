@@ -1,11 +1,11 @@
-﻿<div class="month-navigation">
-    <div class="month-navigation__left">
+﻿<SpaceBetweenPanel Class="month-navigation">
+  <div class="month-navigation__left">
         <IconButton
-            Class="month-navigation__button month-navigation__button--start"
+            Class="month-navigation__button"
             Icon="IconsEnum.ChevronDoubleLeft" 
             OnClick="GoToStartYear" />
         <IconButton 
-            Class="month-navigation__button month-navigation__button--prev" 
+            Class="month-navigation__button" 
             Icon="IconsEnum.ChevronLeft" 
             OnClick="GoToPreviousMonth" />
     </div>
@@ -13,29 +13,30 @@
     <div class="month-navigation__title">@SelectedMonthStartDate.ToString("MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)</div>
 
     <div class="month-navigation__right">
-        <IconButton Class="month-navigation__button month-navigation__button--next"
+        <IconButton Class="month-navigation__button"
             Icon="IconsEnum.ChevronRight"   
             OnClick="GoToNextMonth" />
         <IconButton 
-            Class="month-navigation__button month-navigation__button--end" 
+            Class="month-navigation__button" 
             Icon="IconsEnum.ChevronDoubleRight" 
             OnClick="GoToEndYear" />
     </div>
-</div>
+</SpaceBetweenPanel>
 @code {
     [Parameter] public DateTime SelectedMonthStartDate { get; set; }
     [Parameter] public EventCallback<DateTime> SelectedMonthStartDateChanged { get; set; }
 
-    private async void HandleMonthChanged(DateTime monthStartDate) {
+    private async Task HandleMonthChanged(DateTime monthStartDate) {
         SelectedMonthStartDate = monthStartDate;
         await SelectedMonthStartDateChanged.InvokeAsync(monthStartDate);
     }
 
-    private async void GoToPreviousMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(-1));
+//Рекомендуется использовать Task, для хендлеров, или игнорировать и использовать void?
+    private Task GoToPreviousMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(-1));
 
-    private async void GoToNextMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(1));
+    private Task GoToNextMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(1));
 
-    private void GoToStartYear() => HandleMonthChanged(MonthNavigationHelpers.GetStartYear(SelectedMonthStartDate));
+    private Task GoToStartYear() => HandleMonthChanged(MonthNavigationHelpers.GetStartYear(SelectedMonthStartDate));
 
-    private void GoToEndYear() => HandleMonthChanged(MonthNavigationHelpers.GetEndYear(SelectedMonthStartDate));
+    private Task GoToEndYear() => HandleMonthChanged(MonthNavigationHelpers.GetEndYear(SelectedMonthStartDate));
 }

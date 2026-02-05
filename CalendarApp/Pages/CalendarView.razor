@@ -1,6 +1,7 @@
 ﻿<calendar class="calendar-container calendar-popup">
-
+    
  <MonthNavigation @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
+
  <div class="calendar-grid">
         @foreach (var day in Days) {
             var cellClass = "calendar-grid__button".AddWordIf(IsAnotherMonth(day), "calendar-grid__button--another-month");
@@ -9,8 +10,7 @@
                 Date="day"
                 IsSelected="day == Date"
                 OnSelected="() => HandleDateSelected(day)"/>
-        </div>
-        }
+        </div> }
     </div>
 
 </calendar>
@@ -28,7 +28,7 @@
     void HandleDateSelected(DateTime date) => DateChanged.InvokeAsync(date);
     
     //При изменении параметров компонента, проверяем, что SelectedMonthStartDate соответствует месяцу и году из Date.
-    //Если нет, то устанавливаем его на первый день месяца из Date.
+    //Если нет, то устанавливаем его на первый день месяца из Date. Без этого багует.
     protected override void 
     OnParametersSet() {
         if (SelectedMonthStartDate == default ||
