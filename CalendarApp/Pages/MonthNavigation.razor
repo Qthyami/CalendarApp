@@ -1,5 +1,5 @@
 ﻿<SpaceBetweenPanel Class="month-navigation">
-  <div class="month-navigation__left">
+    <SpaceBetweenPanel Class="month-navigation__left">
         <IconButton
             Class="month-navigation__button"
             Icon="@IconsEnum.ChevronDoubleLeft" 
@@ -8,19 +8,20 @@
             Class="month-navigation__button" 
             Icon="@IconsEnum.ChevronLeft" 
             OnClick="@GoToPreviousMonth" />
-    </div>
+    </SpaceBetweenPanel>
 
-    <div class="month-navigation__title">@SelectedMonthStartDate.ToString("MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)</div>
+    <div class="month-navigation__title">@SelectedMonthStartDate.ToMMMMyyyy()</div>
 
-    <div class="month-navigation__right">
-        <IconButton Class="month-navigation__button"
+    <SpaceBetweenPanel Class="month-navigation__right">
+        <IconButton 
+            Class="month-navigation__button"
             Icon="@IconsEnum.ChevronRight"   
             OnClick="@GoToNextMonth" />
         <IconButton 
             Class="month-navigation__button" 
             Icon="@IconsEnum.ChevronDoubleRight" 
             OnClick="@GoToEndYear" />
-    </div>
+    </SpaceBetweenPanel>
 </SpaceBetweenPanel>
 @code {
     [Parameter] public DateTime SelectedMonthStartDate { get; set; }

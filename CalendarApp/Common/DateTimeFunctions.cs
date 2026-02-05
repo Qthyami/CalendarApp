@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 
 
 // Renamed class to avoid conflict with System.DateTime
 public static class DateTimeFunctions {
     public static string ToMMMMyyyy(this System.DateTime dateTime) =>
-        dateTime.ToString("MMMM yyyy");
+        dateTime.ToString("MMMM yyyy", CultureInfo.InvariantCulture);
 
     public static
     IEnumerable<System.DateTime> GetDaysWithinWeeks(this System.DateTime dateTime, int weeksCount) {
