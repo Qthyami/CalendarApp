@@ -399,14 +399,14 @@ code {
         height: 21px;
     }
 
-        .month-navigation > .nav-left,
-        .month-navigation > .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-        }
+    .month-navigation > .month-navigation__left,
+    .month-navigation > .month-navigation__right {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+    }
 
-        .month-navigation > .month-title {
+        .month-navigation > .month-navigation__title {
             flex: 1 1 auto;
             text-align: center;
             font-family: 'Segoe UI', sans-serif;
@@ -416,7 +416,7 @@ code {
             color: #FFFFFF;
         }
     /* Pages/NavButton.razor.css */
-    .nav-btn {
+    .month-navigation__button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -427,9 +427,9 @@ code {
         cursor: pointer;
     }
 
-        .nav-btn svg {
-            display: block;
-        }
+    .month-navigation__button svg {
+        display: block;
+    }
     /* Layout/MainLayout.razor.css (converted ::deep selectors to global) */
     .page {
         position: relative;

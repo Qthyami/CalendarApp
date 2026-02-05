@@ -2,12 +2,10 @@
 @using CalendarApp.Pages
 
 <calendar-select-box class="calendar-select">
-            <button class="today-dropdown" type="button" @onclick="TogglePopup">
-                <span class="today-text">@Date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)</span>
-                <svg class="icon icon-caret dropdown-arrow" width="7" height="5">
-                    <use href="/images/icons-sprite.svg#icon-caret"></use>
-                </svg>
-            </button>
+    <button class="today-dropdown" @onclick="TogglePopup">
+        <span class="today-text">@Date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)</span>
+        <Icon Value="IconsEnum.ChevronDown" />
+    </button>
 
     @if (IsPopupOpened) {
         <CalendarView 
@@ -23,10 +21,11 @@
     private bool IsPopupOpened { get; set; }
     private void TogglePopup() => IsPopupOpened = !IsPopupOpened;
 
-    private async Task DateChangedHandler(DateTime newDate) {
+    //По правилам тут должен быть не void, a Task
+    private async void DateChangedHandler(DateTime newDate) {
         Date = newDate;
         IsPopupOpened = false;
-       await DateChanged.InvokeAsync(newDate);
+        await DateChanged.InvokeAsync(newDate);
     }
 }
 

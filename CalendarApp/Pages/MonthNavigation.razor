@@ -1,65 +1,41 @@
 ﻿<div class="month-navigation">
-    <div class="nav-left">
-        <NavigationButton IconClass="icon-double-left" Width="11" Height="8"
-                   IconHref="/images/icons-sprite.svg#icon-double-left"
-                   AdditionalClass="nav-start"
-                   OnClick="() => GoToStartYear()" />
-
-        <NavigationButton IconClass="icon-left" Width="5" Height="7"
-                   IconHref="/images/icons-sprite.svg#icon-left"
-                   AdditionalClass="nav-prev"
-                   OnClick="GoToPreviousMonth" />
+    <div class="month-navigation__left">
+        <IconButton
+            Class="month-navigation__button month-navigation__button--start"
+            Icon="IconsEnum.ChevronDoubleLeft" 
+            OnClick="GoToStartYear" />
+        <IconButton 
+            Class="month-navigation__button month-navigation__button--prev" 
+            Icon="IconsEnum.ChevronLeft" 
+            OnClick="GoToPreviousMonth" />
     </div>
 
-    <div class="month-title">@SelectedMonthStartDate.ToString("MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)</div>
+    <div class="month-navigation__title">@SelectedMonthStartDate.ToString("MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)</div>
 
-    <div class="nav-right">
-        <NavigationButton IconHref="/images/icons-sprite.svg#icon-right"
-                   IconClass="icon-right"
-                   Width="5" Height="7"
-                   AdditionalClass="nav-next"
-                   OnClick="GoToNextMonth" />
-
-        <NavigationButton IconHref="/images/icons-sprite.svg#icon-double-right"
-                   IconClass="icon-double-right"
-                   Width="11" Height="8"
-                   AdditionalClass="nav-end"
-                   OnClick="GoToEndYear" />
+    <div class="month-navigation__right">
+        <IconButton Class="month-navigation__button month-navigation__button--next"
+            Icon="IconsEnum.ChevronRight"   
+            OnClick="GoToNextMonth" />
+        <IconButton 
+            Class="month-navigation__button month-navigation__button--end" 
+            Icon="IconsEnum.ChevronDoubleRight" 
+            OnClick="GoToEndYear" />
     </div>
 </div>
 @code {
     [Parameter] public DateTime SelectedMonthStartDate { get; set; }
     [Parameter] public EventCallback<DateTime> SelectedMonthStartDateChanged { get; set; }
 
-    private async Task HandleMonthChanged(DateTime monthStartDate)
-    {
+    private async void HandleMonthChanged(DateTime monthStartDate) {
         SelectedMonthStartDate = monthStartDate;
         await SelectedMonthStartDateChanged.InvokeAsync(monthStartDate);
     }
 
-    private Task GoToPreviousMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(-1));
+    private async void GoToPreviousMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(-1));
 
-    private Task GoToNextMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(1));
+    private async void GoToNextMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(1));
 
-    private Task GoToStartYear()
-    {
-        var thisYearStart = new DateTime(SelectedMonthStartDate.Year, 1, 1);
-        if (SelectedMonthStartDate.Date == thisYearStart.Date)
-        {
-            thisYearStart = thisYearStart.AddYears(-1);
-        }
+    private void GoToStartYear() => HandleMonthChanged(MonthNavigationHelpers.GetStartYear(SelectedMonthStartDate));
 
-        return HandleMonthChanged(thisYearStart);
-    }
-
-    private Task GoToEndYear()
-    {
-        var endYear = new DateTime(SelectedMonthStartDate.Year, 12, 1);
-        if (SelectedMonthStartDate.Date == endYear.Date)
-        {
-            endYear = endYear.AddYears(1);
-        }
-
-        return HandleMonthChanged(endYear);
-    }
+    private void GoToEndYear() => HandleMonthChanged(MonthNavigationHelpers.GetEndYear(SelectedMonthStartDate));
 }

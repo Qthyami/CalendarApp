@@ -1,0 +1,10 @@
+﻿@using CalendarApp.Icons
+
+<button class="@Class" @onclick="OnClick">
+    <Icon Value="@Icon" />
+</button>
+
+@code {
+    [Parameter] public IconsEnum Icon { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+}

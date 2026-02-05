@@ -1,0 +1,16 @@
+﻿@switch (Value) {
+    case IconsEnum.ChevronRight: <ChevronRight />
+        break;
+    case IconsEnum.ChevronLeft: <ChevronLeft />
+        break;
+    case IconsEnum.ChevronDoubleRight: <ChevronDoubleRight />
+        break;
+    case IconsEnum.ChevronDoubleLeft: <ChevronDoubleLeft />
+        break;
+    case IconsEnum.ChevronDown: <ChevronDown />
+        break;
+}
+
+@code {
+    [Parameter] public IconsEnum Value { get; set; }
+}

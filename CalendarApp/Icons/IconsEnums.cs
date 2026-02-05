@@ -6,9 +6,10 @@ public enum IconSize {
     Macro
 }
 
-public enum Icons {
+public enum IconsEnum {
     ChevronRight,
     ChevronLeft,
     ChevronDoubleRight,
     ChevronDoubleLeft,
+    ChevronDown
 }

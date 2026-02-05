@@ -5,10 +5,10 @@
         @foreach (var day in Days) {
             var cellClass = "calendar-grid__button".AddWordIf(IsAnotherMonth(day), "calendar-grid__button--another-month");
         <div class="calendar-grid__cell">
-                <CalendarDayCell Class="@cellClass"
-                                 Date="day"
-                                 IsSelected="day == Date"
-                                 OnSelected="() => HandleDateSelected(day)"/>
+            <CalendarDayCell Class="@cellClass"
+                Date="day"
+                IsSelected="day == Date"
+                OnSelected="() => HandleDateSelected(day)"/>
         </div>
         }
     </div>
@@ -26,7 +26,9 @@
     private bool IsAnotherMonth(DateTime day) => day.Month != CurrentMonth.Month || day.Year != CurrentMonth.Year;
 
     void HandleDateSelected(DateTime date) => DateChanged.InvokeAsync(date);
-
+    
+    //При изменении параметров компонента, проверяем, что SelectedMonthStartDate соответствует месяцу и году из Date.
+    //Если нет, то устанавливаем его на первый день месяца из Date.
     protected override void 
     OnParametersSet() {
         if (SelectedMonthStartDate == default ||
