@@ -203,19 +203,6 @@ code {
 }
 
 
-.today-native {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-    color: white;
-    background-color: #000000;
-}
-
-.date-display {
-    padding: 0 12px;
-    align-self: flex-start;
-}
 
 .calendar-select__text, .date-text {
     font-family: 'Segoe UI', -apple-system, sans-serif;
@@ -311,54 +298,7 @@ code {
     background: transparent;
 }
 
-.filter-buttons-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
-    width: 336px;
-    height: 28px;
-    flex-wrap: nowrap;
-}
 
-.filter-btn-frame {
-    box-sizing: border-box;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 28px;
-    padding: 5px 10px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-small);
-    background: transparent;
-    min-width: 0;
-    min-height: 0;
-}
-
-.filter-btn-today {
-    width: 58px;
-}
-
-.filter-btn-yesterday {
-    width: 81px;
-}
-
-.filter-btn-weekago {
-    width: 86px;
-}
-
-.filter-btn-monthago {
-    width: 93px;
-}
-
-.filter-btn-text {
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--color-text);
-    white-space: nowrap;
-}
 
 .month-navigation {
     display: flex;
