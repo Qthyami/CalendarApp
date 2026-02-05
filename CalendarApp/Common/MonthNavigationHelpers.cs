@@ -1,9 +1,8 @@
 namespace CalendarApp.Common;
 
-public static class MonthNavigationHelpers
-{
-    public static DateTime GetStartYear(DateTime selectedMonthStartDate)
-    {
+public static class MonthNavigationHelpers {
+    public static DateTime
+    GetStartYear(this DateTime selectedMonthStartDate) {
         var thisYearStart = new DateTime(selectedMonthStartDate.Year, 1, 1);
         if (selectedMonthStartDate.Date == thisYearStart.Date) {
             thisYearStart = thisYearStart.AddYears(-1);
@@ -11,8 +10,8 @@ public static class MonthNavigationHelpers
         return thisYearStart;
     }
 
-    public static DateTime GetEndYear(DateTime selectedMonthStartDate)
-    {
+    public static DateTime
+    GetEndYear(this DateTime selectedMonthStartDate) {
         var endYear = new DateTime(selectedMonthStartDate.Year, 12, 1);
         if (selectedMonthStartDate.Date == endYear.Date) {
             endYear = endYear.AddYears(1);

@@ -28,7 +28,7 @@
     //Если нет, то устанавливаем его на первый день месяца из Date. Без этого багует.
     protected override void 
     OnParametersSet() {
-        if (SelectedMonthStartDate == default ||
+        if (SelectedMonthStartDate == DateTime.MinValue ||
         SelectedMonthStartDate.Year != Date.Year ||
         SelectedMonthStartDate.Month != Date.Month) {
         SelectedMonthStartDate = new DateTime(Date.Year, Date.Month, 1);
