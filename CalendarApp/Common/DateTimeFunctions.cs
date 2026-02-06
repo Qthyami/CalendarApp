@@ -13,7 +13,6 @@ public static class DateTimeFunctions {
     public static
     IEnumerable<System.DateTime> GetDaysWithinWeeks(this System.DateTime dateTime, int weeksCount) {
         var resultDaysCount = 7 * weeksCount;
-
         var firstDayOfMonth = new System.DateTime(dateTime.Year, dateTime.Month, 1);
         while (firstDayOfMonth.DayOfWeek != DayOfWeek.Monday)
             firstDayOfMonth = firstDayOfMonth.AddDays(-1);
