@@ -26,13 +26,12 @@
 @code {
     [Parameter] public DateTime SelectedMonthStartDate { get; set; }
     [Parameter] public EventCallback<DateTime> SelectedMonthStartDateChanged { get; set; }
-    //Рекомендуется использовать Task
-    private async void HandleMonthChanged(DateTime monthStartDate) {
-        SelectedMonthStartDate = monthStartDate;
-        await SelectedMonthStartDateChanged.InvokeAsync(monthStartDate);
+
+    private void HandleMonthChanged(DateTime monthStartDate) {
+        SelectedMonthStartDate = monthStartDate; 
+        SelectedMonthStartDateChanged.InvokeAsync(monthStartDate);
     }
 
-    //Рекомендуется использовать Task, для хендлеров, или игнорировать и использовать void?
     private void GoToPreviousMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(-1));
 
     private void GoToNextMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(1));

@@ -1,19 +1,17 @@
-﻿<calendar class="calendar-container ">
- <MonthNavigation @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
- <div class="calendar-grid">
+﻿<calendar class="@Class">
+    <MonthNavigation @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
+    <div class="calendar__days-grid"> @*обертка нужна*@
         @foreach (var day in Days) {
-            var cellClass = "calendar-grid__button".AddWordIf(IsAnotherMonth(day), "calendar-grid__button--another-month");
-        <div class="calendar-grid__cell">
-            <CalendarDayCell Class="@cellClass"
+            <CalendarDayCell Class="@("calendar__days-button".AddWordIf(IsAnotherMonth(day), "calendar__days-button_another-month"))"
                 Date="day"
                 IsSelected="day.Date == Date.Date"
-                OnSelected="() => HandleDateSelected(day)"/>
-        </div> }
+                IsSelectedChanged="() => HandleDateSelected(day)" />
+        }
     </div>
 </calendar>
 @code {
     [Parameter] public DateTime Date { get; set; }
-    [Parameter] public EventCallback<DateTime> DateChanged { get; set; }
+    [Parameter] public EventCallback<DateTime> OnSelected { get; set; }
     DateTime SelectedMonthStartDate { get; set; }
 
     public IEnumerable<DateTime> Days => SelectedMonthStartDate.GetDaysWithinWeeks(weeksCount: 6);
@@ -22,15 +20,15 @@
 
     private bool IsAnotherMonth(DateTime day) => day.Month != CurrentMonth.Month || day.Year != CurrentMonth.Year;
 
-    void HandleDateSelected(DateTime date) => DateChanged.InvokeAsync(date);
-    
+    void HandleDateSelected(DateTime date) => OnSelected.InvokeAsync(date);
+
     //При изменении параметров компонента, проверяем, что SelectedMonthStartDate соответствует месяцу и году из Date.
     //Если нет, то устанавливаем его на первый день месяца из Date. Без этого багует.
-    protected override void 
+    protected override void
     OnParametersSet() {
         if (SelectedMonthStartDate == DateTime.MinValue ||
         SelectedMonthStartDate.Year != Date.Year ||
-        SelectedMonthStartDate.Month != Date.Month) {
+        SelectedMonthStartDate.Month != Date.Month) { 
         SelectedMonthStartDate = new DateTime(Date.Year, Date.Month, 1);
         }
     }

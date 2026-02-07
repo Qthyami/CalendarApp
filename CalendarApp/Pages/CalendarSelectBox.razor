@@ -1,14 +1,15 @@
 ﻿
-<calendar-select-box class="calendar-select">
+<calendar-select-box class="@Class">
     <button class="calendar-select__toggle" @onclick="TogglePopup">
-        <span class="calendar-select__text">@Date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)</span>
+        <span class="calendar-select__text">@Date.ToDdMMMyyyy()</span>
         <Icon Value="IconsEnum.ChevronDown" />
     </button>
 
     @if (IsPopupOpened) {
-        <CalendarView 
+        <CalendarView
+            Class="calendar"
             Date="@Date"
-            DateChanged="@DateChangedHandler" />
+            OnSelected="@DateChangedHandler" />
     }
 </calendar-select-box>
 

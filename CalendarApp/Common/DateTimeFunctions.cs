@@ -9,6 +9,8 @@ using System.Globalization;
 public static class DateTimeFunctions {
     public static string ToMMMMyyyy(this System.DateTime dateTime) =>
         dateTime.ToString("MMMM yyyy", CultureInfo.InvariantCulture);
+    public static string ToDdMMMyyyy(this System.DateTime dateTime) =>
+        dateTime.ToString("dd MMM yyyy", CultureInfo.InvariantCulture);
 
     public static
     IEnumerable<System.DateTime> GetDaysWithinWeeks(this System.DateTime dateTime, int weeksCount) {
