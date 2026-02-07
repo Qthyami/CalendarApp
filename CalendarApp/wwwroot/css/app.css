@@ -11,13 +11,19 @@
     --column-gap-x: 30px;
     --column-gap-y: 8px;
     --calendar-days-width: 299px;
+    --calendar-days-height: 172px;
     --calendar-width: 324px;
+    --calendar-height: 236px;
     --active-size: 28px;
     --day-radius: 4px;
     --active-day-bg: #00A961;
     --border-radius-small: 4px;
     --calendar-padding-x: 12px;
     --calendar-padding-top: 8px;
+    --calendar-padding-bottom: 20.5px;
+    --dropdown-width: 181px;
+    --dropdown-height: 28px;
+    --spacing-calendar-gap: 2.5px;
 }
 
 * {
@@ -39,32 +45,28 @@ body {
 .project-container {
     display: flex;
     justify-content: center;
-    padding:24px;
-   }
+    padding: 24px;
+}
 
 .calendar-select-box {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-start;
     width: var(--calendar-width);
 }
 
-
 .calendar-select__toggle {
-    min-width: 181px;
-    min-height: 28px;
+    min-width: var(--dropdown-width);
+    min-height: var(--dropdown-height);
     background: var(--color-black);
-    border: 0.5px solid var(--color-border-active);
+   border: 0.5px solid var(--color-border-active);
     border-radius: var(--border-radius-small);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 11px 0 10px;
+    padding: 0 10px 0 10px;
     cursor: pointer;
 }
-
-
 
 .calendar-select__text {
     font-weight: 600;
@@ -73,40 +75,30 @@ body {
     color: var(--color-text);
 }
 
-.calendar{
+.calendar {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
     width: var(--calendar-width);
-    min-height: 236px;
-    margin-top: 2.5px;
-    padding: var(--calendar-padding-top) var(--calendar-padding-x) 20.5px;
+    min-height: var(--calendar-height);
+    margin-top: var(--spacing-calendar-gap);
+    padding: var(--calendar-padding-top) var(--calendar-padding-x) var(--calendar-padding-bottom);
     background: var(--color-container-bg);
     box-shadow: 0 12px 25px rgba(0,0,0,0.55);
     border-radius: var(--border-radius-small);
-
 }
 
-.calendar__days-grid{
-display: grid;
-grid-template-columns: repeat(7, var(--text-col));
-grid-auto-rows: var(--text-row);
-column-gap: var(--column-gap-x);
-row-gap: var(--column-gap-y);
-width: var(--calendar-days-width);
-height: 172px;
-justify-items: center;
-align-items: center;
+.calendar__days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, var(--text-col));
+    grid-auto-rows: var(--text-row);
+    column-gap: var(--column-gap-x);
+    row-gap: var(--column-gap-y);
+    width: var(--calendar-days-width);
+    height: var(--calendar-days-height);
 }
 
 .calendar-grid__cell {
     position: relative;
-    width: var(--text-col);
-    height: var(--text-row);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .calendar__days-button {
@@ -119,77 +111,51 @@ align-items: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
     border: none;
     background: transparent;
     border-radius: var(--day-radius);
     font-weight: 400;
     font-size: 15px;
     line-height: 22px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--color-text);
     cursor: pointer;
-    z-index: 2;
 }
 
 .calendar__days-button_selected {
-background: var(--active-day-bg);
-color: #ffffff;
+    background: var(--active-day-bg);
+    color: #ffffff;
 }
 
-.calendar__days-button_another-month{
-color: rgba(255, 255, 255, 0.2);
-background: transparent;
+.calendar__days-button_another-month {
+    color: rgba(255, 255, 255, 0.2);
 }
-
-
 
 .month-navigation {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 100%;
     margin-top: 8px;
     margin-bottom: 14.5px;
-    height: 21px;
 }
 
-    .month-navigation > .month-navigation__left,
-    .month-navigation > .month-navigation__right {
-        display: flex;
-        align-items: center;
-        gap: 13px;
-    }
+.month-navigation__left,
+.month-navigation__right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-    .month-navigation > .month-navigation__title {
-
-        text-align: center;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 21px;
-        color: #FFFFFF;
-    }
+.month-navigation__title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+}
 
 .month-navigation__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
     border: none;
     background: transparent;
     line-height: 0;
     cursor: pointer;
 }
-
-    
-.page {
-   }
-
-main {
-   }
-
- main > article {
-           }
 
 #app {
     min-height: 100vh;

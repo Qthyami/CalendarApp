@@ -22,15 +22,10 @@
 
     void HandleDateSelected(DateTime date) => OnSelected.InvokeAsync(date);
 
-    //При изменении параметров компонента, проверяем, что SelectedMonthStartDate соответствует месяцу и году из Date.
-    //Если нет, то устанавливаем его на первый день месяца из Date. Без этого багует.
     protected override void
     OnParametersSet() {
-        if (SelectedMonthStartDate == DateTime.MinValue ||
-        SelectedMonthStartDate.Year != Date.Year ||
-        SelectedMonthStartDate.Month != Date.Month) { 
+        base.OnParametersSet();
         SelectedMonthStartDate = new DateTime(Date.Year, Date.Month, 1);
-        }
     }
 
 }

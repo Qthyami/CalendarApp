@@ -20,10 +20,9 @@
     private bool IsPopupOpened { get; set; }
     private void TogglePopup() => IsPopupOpened = !IsPopupOpened;
 
-    //По правилам тут должен быть не void, a Task
-    private async void DateChangedHandler(DateTime newDate) {
-        Date = newDate;
-        await DateChanged.InvokeAsync(newDate);
-    }
+   private async void DateChangedHandler(DateTime newDate) {
+    Date = newDate;
+    await DateChanged.InvokeAsync(newDate);
+}
 }
 
