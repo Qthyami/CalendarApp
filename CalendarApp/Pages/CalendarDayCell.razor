@@ -1,6 +1,5 @@
 ﻿
-<button class="@Class @IsSelected.T("calendar__days-button_selected")"
-        @onclick="HandleClick">
+<button class="@($"{Class} {(IsSelected ? "calendar-grid__button--selected" : string.Empty)}")" @onclick="HandleClick">
     @Date.Day
 </button>
 

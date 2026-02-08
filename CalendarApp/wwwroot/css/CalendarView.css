@@ -10,7 +10,7 @@
     border-radius: var(--border-radius-small);
 }
 
-.calendar__days-grid {
+.calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, var(--text-column));
     grid-auto-rows: var(--text-row);

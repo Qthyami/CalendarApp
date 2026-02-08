@@ -1,5 +1,5 @@
 ﻿
-.calendar__days-button {
+.calendar-grid__button {
     width: var(--active-size);
     height: var(--active-size);
     display: inline-flex;
@@ -15,11 +15,11 @@
     cursor: pointer;
 }
 
-.calendar__days-button_selected {
+.calendar-grid__button--selected {
     background: var(--active-day-bg);
     color: #ffffff;
 }
 
-.calendar__days-button_another-month {
-    color: var(--color-border);
+.calendar-grid__button--another-month {
+    color: rgba(255, 255, 255, 0.2);
 }
