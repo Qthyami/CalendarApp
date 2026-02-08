@@ -1,6 +1,6 @@
 ﻿<calendar class="@Class">
     <MonthNavigation @bind-SelectedMonthStartDate="SelectedMonthStartDate" />
-    <div class="calendar__days-grid"> @*обертка нужна*@
+    <div class="calendar__days-grid">
         @foreach (var day in Days) {
             <CalendarDayCell Class="@("calendar__days-button".AddWordIf(IsAnotherMonth(day), "calendar__days-button_another-month"))"
                 Date="day"

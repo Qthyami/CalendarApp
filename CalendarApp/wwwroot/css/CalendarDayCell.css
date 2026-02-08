@@ -1,0 +1,25 @@
+﻿
+.calendar__days-button {
+    width: var(--active-size);
+    height: var(--active-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    border-radius: var(--day-radius);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.calendar__days-button_selected {
+    background: var(--active-day-bg);
+    color: #ffffff;
+}
+
+.calendar__days-button_another-month {
+    color: var(--color-border);
+}

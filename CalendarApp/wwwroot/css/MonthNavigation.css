@@ -1,0 +1,26 @@
+﻿.month-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    margin-bottom: 14.5px;
+}
+
+.month-navigation__left,
+.month-navigation__right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.month-navigation__title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.month-navigation__button {
+    border: none;
+    background: transparent;
+    line-height: 0;
+    cursor: pointer;
+}

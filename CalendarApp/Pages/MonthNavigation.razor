@@ -36,7 +36,23 @@
 
     private void GoToNextMonth() => HandleMonthChanged(SelectedMonthStartDate.AddMonths(1));
 
-    private void GoToStartYear() => HandleMonthChanged(SelectedMonthStartDate.GetStartYear());
+    private void GoToStartYear() => HandleMonthChanged(StartOfYearAdjusted(SelectedMonthStartDate));
 
-    private void GoToEndYear() => HandleMonthChanged(SelectedMonthStartDate.GetEndYear());
+    private void GoToEndYear() => HandleMonthChanged(EndOfYearAdjusted(SelectedMonthStartDate));
+
+    private static DateTime
+    StartOfYearAdjusted(DateTime selectedMonthStartDate) {
+        var yearStart = new DateTime(selectedMonthStartDate.Year, 1, 1);
+        if (selectedMonthStartDate.Date == yearStart.Date) 
+            yearStart = yearStart.AddYears(-1);
+        return yearStart;
+    }
+    private static DateTime
+    EndOfYearAdjusted(DateTime selectedMonthStartDate) {
+        var endYear = new DateTime(selectedMonthStartDate.Year, 12, 1);
+        if (selectedMonthStartDate.Date == endYear.Date) 
+            endYear = endYear.AddYears(1);
+        
+        return endYear;
+    }
 }

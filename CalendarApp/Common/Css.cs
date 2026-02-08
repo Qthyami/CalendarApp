@@ -20,7 +20,7 @@ public static class Css {
       Combine(string baseClass, params string[] modifiers) {
         var all = new List<string> { baseClass };
         all.AddRange(modifiers.Where(modifier => !string.IsNullOrWhiteSpace(modifier))
-        .Select(modifier => $"{baseClass}{modifier}")); // склеиваем base + модификатор
+        .Select(modifier => $"{baseClass}{modifier}")); 
         return string.Join(" ", all);
     }
 }

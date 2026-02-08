@@ -1,10 +1,9 @@
-﻿@*лишняя обертка обязательна*@
-<div class="calendar-grid__cell">
-    <button class="@Class @IsSelected.T("calendar__days-button_selected")"
-            @onclick="HandleClick">
-        @Date.Day
-    </button>
-</div>
+﻿
+<button class="@Class @IsSelected.T("calendar__days-button_selected")"
+        @onclick="HandleClick">
+    @Date.Day
+</button>
+
 @code {
     [Parameter] public DateTime Date { get; set; }
     [Parameter] public bool IsSelected { get; set; }

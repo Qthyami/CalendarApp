@@ -1,0 +1,28 @@
+﻿.calendar-select__box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: var(--calendar-width);
+}
+
+.calendar-select__toggle {
+    min-width: var(--dropdown-width);
+    min-height: var(--dropdown-height);
+    background: var(--color-black);
+    border: 0.5px solid var(--color-border-active);
+    border-radius: var(--border-radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    cursor: pointer;
+}
+
+.calendar-select__text {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--color-text);
+}
+
+

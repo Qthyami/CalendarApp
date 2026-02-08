@@ -1,0 +1,21 @@
+﻿.calendar {
+    display: flex;
+    flex-direction: column;
+    width: var(--calendar-width);
+    min-height: var(--calendar-height);
+    margin-top: var(--spacing-calendar-gap);
+    padding: var(--calendar-padding-top) var(--calendar-padding-x) var(--calendar-padding-bottom);
+    background: var(--color-container-bg);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.55);
+    border-radius: var(--border-radius-small);
+}
+
+.calendar__days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, var(--text-column));
+    grid-auto-rows: var(--text-row);
+    column-gap: var(--column-gap-x);
+    row-gap: var(--column-gap-y);
+    justify-items: center;
+    align-items: center;
+}
